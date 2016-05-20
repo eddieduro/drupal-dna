@@ -33,23 +33,25 @@ class DnaTestCase extends DrupalUnitTestCase
     public static function getInfo()
     {
         return array(
-            'name' => 'dna_find function Test',
-            'description' => 'Test the DNA Find function.',
+            'name' => 'Dna function Test',
+            'description' => 'Test the DNA functions.',
             'group' => 'DNA Module Tests',
         );
     }
 
- 
-
-    public function testDnaFind()
+    public function testDnaFormatInput()
     {
-        $description = 'An input should get upper cased and string split.';
+    	$description = 'An input should get upper cased and string split.';
         $input = 'a';
         $result = dna_format_input($input);
         $expected_output = array('A');
         $this->assertEqual($result, $expected_output, $description);
+    }
 
-        $description = 'The input of A should return T.';
+    public function testDnaFind()
+    {
+
+        $description = 'The input of an A should return T.';
         $input = array('A');
         $result = dna_find($input);
         $expected_output = 'T';
