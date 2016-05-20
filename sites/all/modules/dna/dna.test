@@ -1,0 +1,27 @@
+<?php
+/**
+ * @file
+ * Functional tests for the DNA module.
+ */
+class DnaTests extends DrupalWebTestCase
+{
+	public static function getInfo()
+	{
+		return array(
+            'name' => 'DNA Module Tests',
+            'description' => 'Test the DNA module.',
+            'group' => 'DNA Module Tests',
+        );
+	}
+
+	public function setUp() {
+        parent::setUp(array('dna'));
+
+    }
+
+    public function testDnaNavigation() {
+        $this->drupalGet('dna_page');
+        $this->assertText('Enter a sequence of DNA using the letters A,C,G,T. No punctuation or spaces.', 'Success!');
+    }
+
+}

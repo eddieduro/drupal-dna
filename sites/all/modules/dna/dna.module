@@ -1,0 +1,15 @@
+<?php
+function dna_menu() {
+    $items = array();
+    $items['dna_page'] = array(
+        'title' => "Dna",
+        'page callback' => 'dna_page',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function say_hello() {
+    return '<p>Hello my dear friend!</p>';
+}

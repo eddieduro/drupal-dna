@@ -1,0 +1,7 @@
+name = Dna Module
+description = Returns a double helix dna strand from user input
+package = Other
+core = 7.x
+files[] = dna.module
+files[] = dna.test
+dependencies[] = simpletest
