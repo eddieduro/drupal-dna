@@ -3,13 +3,13 @@ function dna_menu() {
     $items = array();
     $items['dna_page'] = array(
         'title' => "Dna",
-        'page callback' => 'dna_page',
+        'page callback' => 'dna_start',
         'access callback' => TRUE,
         'type' => MENU_NORMAL_ITEM,
     );
     return $items;
 }
 
-function say_hello() {
-    return '<p>Hello my dear friend!</p>';
+function dna_start() {
+    return '<p>Enter a sequence of DNA using the letters A,C,G,T. No punctuation or spaces.</p>';
 }

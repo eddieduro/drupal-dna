@@ -21,7 +21,7 @@ class DnaTests extends DrupalWebTestCase
 
     public function testDnaNavigation() {
         $this->drupalGet('dna_page');
-        $this->assertText('Enter a sequence of DNA using the letters A,C,G,T. No punctuation or spaces.', 'Success!');
+        $this->assertText('Enter a sequence of DNA using the letters A,C,G,T. No punctuation or spaces.', 'Success dna page works!');
     }
 
 }
