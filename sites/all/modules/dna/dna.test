@@ -22,11 +22,12 @@ class DnaTests extends DrupalWebTestCase
     public function testDnaNavigation() {
         $this->drupalGet('dna_page');
         $this->assertText('Using only A,C,G,T enter in a DNA sequence.', 'Success dna page works!');
+				$info['dna_input'] = "A";
         $this->drupalPost('dna_page', $info, t('Submit'));
-        $this->assertText("Using only A,C,G,T enter in a DNA sequence.", 'The text on the page is correct. Hoorah!');
+        $this->assertText("T", 'The text on the page is correct. Hoorah!');
     }
 
- }   
+ }
 
 class DnaTestCase extends DrupalUnitTestCase
 {
@@ -55,6 +56,30 @@ class DnaTestCase extends DrupalUnitTestCase
         $input = array('A');
         $result = dna_find($input);
         $expected_output = 'T';
+        $this->assertEqual($result, $expected_output, $description);
+
+				$description = 'The input of an T should return A.';
+        $input = array('T');
+        $result = dna_find($input);
+        $expected_output = 'A';
+        $this->assertEqual($result, $expected_output, $description);
+
+				$description = 'The input of an C should return G.';
+				$input = array('C');
+				$result = dna_find($input);
+				$expected_output = 'G';
+				$this->assertEqual($result, $expected_output, $description);
+
+				$description = 'The input of an G should return C.';
+				$input = array('G');
+				$result = dna_find($input);
+				$expected_output = 'C';
+				$this->assertEqual($result, $expected_output, $description);
+
+				$description = 'The input of an ATC should return TAG.';
+        $input = array('A', 'T','C' );
+        $result = dna_find($input);
+        $expected_output = 'TAG';
         $this->assertEqual($result, $expected_output, $description);
     }
 
