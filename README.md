@@ -4,6 +4,7 @@
 ###By Eddie Duro - 5/13/16
 
 ##Login info
+* db name: dna_ajax
 * db username: dna_admin
 * db password: admin
 * site username: admin
