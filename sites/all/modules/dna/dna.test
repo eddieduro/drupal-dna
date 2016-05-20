@@ -21,7 +21,39 @@ class DnaTests extends DrupalWebTestCase
 
     public function testDnaNavigation() {
         $this->drupalGet('dna_page');
-        $this->assertText('Enter a sequence of DNA using the letters A,C,G,T. No punctuation or spaces.', 'Success dna page works!');
+        $this->assertText('Using only A,C,G,T enter in a DNA sequence.', 'Success dna page works!');
+        $this->drupalPost('dna_page', $info, t('Submit'));
+        $this->assertText("Using only A,C,G,T enter in a DNA sequence.", 'The text on the page is correct. Hoorah!');
+    }
+
+ }   
+
+class DnaTestCase extends DrupalUnitTestCase
+{
+    public static function getInfo()
+    {
+        return array(
+            'name' => 'dna_find function Test',
+            'description' => 'Test the DNA Find function.',
+            'group' => 'DNA Module Tests',
+        );
+    }
+
+ 
+
+    public function testDnaFind()
+    {
+        $description = 'An input should get upper cased and string split.';
+        $input = 'a';
+        $result = dna_format_input($input);
+        $expected_output = array('A');
+        $this->assertEqual($result, $expected_output, $description);
+
+        $description = 'The input of A should return T.';
+        $input = array('A');
+        $result = dna_find($input);
+        $expected_output = 'T';
+        $this->assertEqual($result, $expected_output, $description);
     }
 
 }
